@@ -4,33 +4,42 @@
  * rem 相关的工具
  * @param {*}  
  */
-export const remUtil = {
-  // 调整窗口或者翻转屏幕事件
-  resizeEvent: 'orientationchange' in window ? 'orientationchange' : 'resize',
-  // 事件句柄
-  handlers: [],
-  // 添加设置rem的事件
-  addRemHandler: function(designWith){
-    function recalc(){
-      const docEl = document.documentElement;
-      const clientWidth = docEl.clientWidth;
-      if (!clientWidth) return;
-      docEl.style.fontSize = 100 * (clientWidth / Number(designWith))+ 'px';
-    };
-      
-    if (!document.addEventListener) return;
-    const handler = throttle(recalc,500);
-    remUtil.handlers.push(handler);
-    window.addEventListener(remUtil.resizeEvent, handler, false);
-    document.addEventListener('DOMContentLoaded', recalc, false);       
-  },
-  // 移除设置rem的事件
-  removeRemHandler:function(){
-    remUtil.handlers.forEach((handler)=>{
-      window.removeEventListener(remUtil.resizeEvent, handler);
-    })
-  },
+export function rem(){
+  // 基准大小
+  var baseSize = 16;
+  // 设置 rem 函数
+  function setRem() {
+    // 当前页面宽度相对于 420 宽的缩放比例，可根据自己需要修改。
+    var scale = document.documentElement.clientWidth / 420;
+    // 设置页面根节点字体大小
+    document.documentElement.style.fontSize = (baseSize * Math.min(scale, 8)) + 'px'
+  }
+  // 初始化
+  setRem();
+  // 改变窗口大小时重新设置rem
+  window.onresize = function () {
+    setRem()
+  }
+  console.log(document.documentElement.style.fontSize)
 }
+  // (function () {
+  //   // 基准大小
+  //   var baseSize = 16;
+  //   // 设置 rem 函数
+  //   function setRem() {
+  //     // 当前页面宽度相对于 420 宽的缩放比例，可根据自己需要修改。
+  //     var scale = document.documentElement.clientWidth / 420;
+  //     // 设置页面根节点字体大小
+  //     document.documentElement.style.fontSize = (baseSize * Math.min(scale, 8)) + 'px'
+  //   }
+  //   // 初始化
+  //   setRem();
+  //   // 改变窗口大小时重新设置rem
+  //   window.onresize = function () {
+  //     setRem()
+  //   }
+  //   console.log(document.documentElement.style.fontSize)
+  // }());
 
 /**
  * 删除html上的行内style

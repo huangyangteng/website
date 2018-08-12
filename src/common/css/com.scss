@@ -1,3 +1,178 @@
-html{
-    font-size: 30px;
+@import 'reset.scss';
+
+
+
+
+
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*```````````````````一 . 字体与排版 */
+// 媒体查询设置字体大小
+@media screen and (max-width:321px){
+    body{
+        font-size: 12px;
+    }
 }
+@media screen and (min-width:321px) and (max-width:400px){
+    body{
+        font-size: 13px;
+    }
+}
+@media screen and (min-width:400px) and (max-width:641px){
+    body{
+        font-size: 14px;
+    }
+}
+@media screen and (min-width:641px){
+    body{
+        font-size: 16px;
+    }
+}
+p{
+    font-size: 1em;
+}
+h5{
+    font-size: 1.2em;
+}
+h3{
+    font-size: 1.5em;
+}
+h2{
+    font-size: 2.5em;
+}
+
+// 设置使用的字体
+
+
+
+
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*``````````````````````````二、颜色主题定义*/
+
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:               #1e1f21;
+//** Global text color on `<body>`.
+$text-color:            $gray-dark !default;
+
+//** Global textual link color.
+$link-color:            $brand-primary !default;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      darken($link-color, 15%) !default;
+//** Link hover decoration.
+$link-hover-decoration: underline !default;
+
+
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*``````````````````````````三、公共类mixin定义*/
+@mixin flex-h ($h:space-between,$v:center){
+    display: flex;
+    justify-content: $h;
+    align-items: $v;
+}
+@mixin flex-v ($h:center,$v:center){
+    display: flex;
+    flex-direction: column;
+    justify-content: $h;
+    align-items: $v;
+}
+
+@mixin border-box($top:0,$bottom:0,$left:0,$right:0){
+    box-sizing: border-box;
+    padding-top: $top;
+    padding-bottom: $bottom;
+    padding-left: $left;
+    padding-right: $right;
+}
+
+@mixin bg-img($url,$mode:cover){
+    background-image: $url;
+    background-size: $mode;
+}
+@mixin bg-c($url,$width,$height){
+    background-image: $url;
+    background-size: $width $height;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+// 按钮
+@mixin btn-color($bg,$font){
+    transition: 1s all;
+    background:$bg;
+    color: $font;
+}
+@mixin btn-distance($padding-tb,$padding-lr,$font,$raduis){
+    padding: $padding-tb $padding-lr;
+    font-size: $font;
+    border-radius: $raduis;
+}
+// 绝对定位元素居中
+// 水平居中
+@mixin ab-c-h(){
+    left: 0;right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+// 垂直居中
+@mixin ab-c-v(){
+    bottom: 0;top: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+
+
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·············四、公共类定义*/
+
+
+/*·----公共组件  header footer--------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*············五、公共组件定义*/
+
+
+
+
+
+
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*·------------------------------------------------------------------------------------------*/
+/*············六、body定义（不涉及字体大小）*/
+
+body{
+    color: #333;
+    line-height: 1;
+    background:$body-bg;
+
+}
+
+
